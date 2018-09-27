@@ -1,0 +1,35 @@
+.col_yel {
+  margin-top: 30px;
+  color: #f49902;
+}
+
+.callme_main p{
+  margin-bottom: 10px;
+}
+
+
+@media (min-width: 992px) {
+  #allmap {
+    width: 100%;
+    height: 500px;
+  }
+  .callme_main {
+    font-size: 24px;
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 992px) {
+  #almap {
+    width: 100%;
+    height: 300px;
+  }
+  .callme_main {
+    font-size: 16px;
+    padding: 20px 0;
+  }
+
+  .callme_main p{
+    padding: 0 20px;
+  }
+}

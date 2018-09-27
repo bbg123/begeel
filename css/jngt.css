@@ -1,0 +1,150 @@
+
+.active{
+  background: #ffeb92;
+}
+
+@media (max-width: 992px) {
+
+  .joint_guarantee h4{
+    font-size: 40px;
+    text-align: center;
+    color: #f49a00;
+  }
+  
+  .selectbox {
+    position: relative;
+    padding: 0.1rem 0.7rem;
+    margin-top: 0.1rem;
+  }
+  
+  .selectList {
+    width: 80%;
+    height: 3rem;
+    background: #fff;
+    overflow: scroll;
+    list-style: none;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 0 0.1rem;
+    display: none;
+    position: absolute;
+    z-index: 30;
+  }
+  
+  .selectList li {
+    padding: 0.2rem 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .selectList li:last-child{
+    border-bottom: none;
+  }
+  
+  .select {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    padding: 0.1rem 0.2rem;
+    border: 1px solid #ccc;
+    background: #fff;
+  }
+  
+  .select_content {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 0.2rem;
+  }
+  
+  .select_content p {
+    padding: 0.1rem;
+  }
+
+  #almap {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  .joint_guarantee {
+    position: relative;
+    margin-top: 20px !important;
+  }
+
+  .selectbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    z-index: 11;
+    cursor: pointer;
+  }
+  
+  .selectList {
+    width: 100%;
+    height: 3rem;
+    background: #fff;
+    overflow-y: scroll;
+    list-style: none;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 0 0.1rem;
+    display: none;
+    position: absolute;
+    z-index: 20;
+  }
+  
+  .selectList li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .selectList li:last-child{
+    border-bottom: none;
+  }
+  
+  .select {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+  }
+  
+  .select_content {
+    width: 20%;
+    height: 100%;
+    font-size: 14px;
+    padding-top: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background: rgba(255,255,255,.8);
+    display: none;
+  }
+  
+  .select_content p {
+    padding: 0.1rem;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  .select_content p:first-child{
+    border-top: 1px solid #ccc;
+  }
+
+  #allmap {
+    width: 100%;
+    height: 600px;
+    margin-bottom: 20px;
+  }
+
+}
+

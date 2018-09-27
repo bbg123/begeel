@@ -1,0 +1,254 @@
+
+@media screen and (max-width: 992px) {
+
+  body {
+    background: #f8f8f8;
+  }
+  
+  .shouye_05 {
+    position: relative;
+  }
+  
+  .pchome_top_ad {
+    width: 100%;
+    margin: 5px 0 !important;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+  }
+  
+  .pchome_top_ad_img {
+    width: 50%;
+    height: 2.5rem;
+    display: block;
+    padding: 5px 5px 5px 10px;
+    box-sizing: border-box;
+  }
+
+  .pchome_top_ad_img:nth-child(2n){
+    padding: 5px 10px 5px 5px;
+  }
+  
+  .pchome_main_title {
+    padding: 0 10px;
+  }
+  
+  .pchome_main_title h3 {
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  .pchome_main_title_more {
+    font-size: 14px;
+  }
+  
+  .pchome_main_title_more i {
+    color: #ff0200;
+  }
+  
+  .pchome_main_content {
+    margin-bottom: 10px;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+  }
+  
+  .pchome_main_content li {
+    width: 50%;
+    height: 4.5rem;
+    padding: 5px 5px 5px 10px;
+    box-sizing: border-box; 
+  }
+
+  .pchome_main_content li:nth-child(2n){
+    padding: 5px 10px 5px 5px;
+  }
+  
+  .pchome_main_ad {
+    margin-bottom: 15px;
+    display: block;
+  }
+
+}
+
+
+@media screen and (min-width: 992px) {
+  
+  .pchome_lb {
+    height: 550px;
+    position: relative;
+  }
+
+  .pchome_lb_navbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pchome_lb_nav {
+    width: 24%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(200, 200, 200, .5);
+    z-index: 10;
+    font-size: 24px;
+    padding: 5% 0;
+  }
+
+  .pchome_lb_nav2 {
+    position: absolute;
+    width: 76%;
+    height: 100%;
+    left: 24%;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    display: none;
+    font-size: 14px;
+    overflow: hidden;
+    border-top: 1px solid #e0e0e0;
+    -webkit-box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+  }
+
+  .pchome_lb_nav2 li {
+    width: 25%;
+    height: 20%;
+    float: left;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .pchome_lb_nav2 li a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    align-items: center;
+  }
+
+  .pchome_lb_nav2 li img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .pchome_lb_nav2_text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .pchome_lb_nav2 a:hover{
+    color:#FF9900 !important;
+  }
+
+  .pchome_lb_nav li {
+    padding: 12px 30px;
+    position: relative;
+  }
+
+  .pchome_lb_nav li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .lihover{
+    background: #FF9900;
+  }
+
+  .pchome_top_ad {
+    width: 100%;
+    height: 186px;
+    margin: 30px auto !important;
+  }
+
+  .pchome_top_ad_img {
+    width: 24%;
+    height: 100%;
+    display: block;
+    float: left;
+    margin-right: 1.33%;
+  }
+
+  .pchome_top_ad_img:last-child{
+    margin-right: 0;
+  }
+
+  .pchome_main_title {
+    padding: 10px 0;
+  }
+
+  .pchome_main_title h3 {
+    font-weight: 800;
+  }
+
+  .pchome_main_title_more {
+    font-size: 14px;
+  }
+
+  .pchome_main_title_more i {
+    color: #ff0200;
+  }
+
+  .pchome_main_content {
+    margin-bottom: 42px;
+  }
+
+
+  .pchome_main_content li {
+    float: left;
+    width: 24%;
+    height: 372px;
+    margin-left: 1.33%;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+  }
+
+  .hover {
+    -webkit-box-shadow:0 15px 30px rgba(0,0,0,.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+    -webkit-transform: translateY(-2px);
+    transform:translateY(-2px);
+  }
+
+  .pchome_main_content li:first-child{
+    margin-left: 0;
+  }
+
+  .pchome_main_ad {
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  /* 重置样式 */
+  .swiper-container {
+    margin-bottom: 0.1rem;
+  }
+
+  .swiper-pagination-bullets {
+    bottom:0 !important; 
+  }
+
+  .swiper-pagination-bullet {
+    background: #959595;
+  }
+
+  .pchome_floorad {
+    display: block;
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,19 @@
+
+@media (max-width: 992px) {
+  .yelbtn {
+    width: 80% !important;
+  }
+  .yelbtn_content h2 {
+    font-size: 0.4rem;
+    font-weight: 600;
+    padding: 0.2rem 0;
+    text-align: center;
+  }
+  .yelbtn_content p {
+    margin: 0.2rem 0;
+  }
+  .yelbtn_content_text {
+    text-indent: 2em;
+    font-weight: 500;
+  }
+}

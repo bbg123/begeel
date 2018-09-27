@@ -1,0 +1,150 @@
+
+body {
+  background: #f7f9ff;
+}
+.goods_content {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  flex-wrap:wrap;
+}
+.goods_content li{
+  font-size: 14px;
+  text-align: center;
+}
+
+.goods_content_img {
+  display: block;
+  width: 100%;
+  background: #fff;
+}
+
+.goods_content_text {
+  padding: 10px;
+  background: #fff;
+}
+
+.goods_content_text_bor {
+  border: 1.5px solid #000;
+  padding: 2px 0;
+}
+
+.goods_content_text_title {
+  margin-bottom: 5px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.goods_content_text_bor span:first-child{
+  background: #000;
+  color: #fff;
+  padding: 2px;
+  overflow:hidden;
+}
+
+.goods_content_text_bor span:last-child{
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  padding: 0 4px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.loading {
+  font-size: 14px;
+  font-weight: 900;
+  position: fixed;
+  background:#fff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  border: 1xp solid #f8f8f8;
+}
+
+.no_data {
+  text-align: center;
+  width: 100% !important;
+  margin: 40px 0;
+}
+
+.no_data h2 {
+  font-weight: 600;
+}
+
+.no_data div {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+
+/* 手机端 */
+@media screen and (max-width:992px) {
+
+  .videourl {
+    display: block;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .goods_content {
+    padding: 0 5px;
+  }
+
+  .goods_content li{
+    width: 49%;
+    margin-right: 2%;
+    margin-bottom: 5px;
+    font-size: 0.24rem;
+  }
+
+  .goods_content li:nth-child(2n){
+    margin-right: 0%;
+  }
+
+  .goods_content_text_bor span:last-child{
+    padding: 0 2px;
+    font-size: 0.2rem;
+  }
+
+  .goods_content_text {
+    padding: 10px 5px;
+  }
+
+}
+
+
+  /* pc端 */
+@media screen and (min-width: 992px) {
+  .goods_content li{
+    width: 24.25%;
+    margin-right: 1%;
+    margin-bottom: 10px;
+  }
+
+  .goods_content_img {
+    padding: 30px;
+  }
+
+  .goods_content_img img{
+    transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+  }
+
+  .goods_content li:nth-child(4n){
+    margin-right: 0%;
+  }
+
+  .hover {
+    transform: scale3d(1.2,1.2,1.1);
+    -ms-transform:scale3d(1.2,1.2,1.1);
+    -webkit-transform:scale3d(1.2,1.2,1.1); 
+  }
+
+}

@@ -1,0 +1,137 @@
+
+@media screen and (max-width: 992px) {
+  .suggest_main {
+    font-size: 0.2rem;
+    font-weight: 900;
+  }
+  
+  .suggest_main_content ul {
+    margin-top: 0.54rem;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction:column;
+    align-items: center;
+    list-style: none;
+  }
+  
+  .suggest_main_content .yelbtn {
+    width: 2.94rem;
+    height: 0.42rem;
+    line-height: 0.42rem;
+    background: #f7d24b;
+    border-radius: 20px;
+    margin-bottom: 0.3rem;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .suggest_down {
+    width: 0.3rem;
+    height: 0.3rem;
+    position: absolute;
+    bottom: -0.2rem;
+    left: 50%;
+    margin-left: -0.15rem;
+    animation: suggest_down 1s linear infinite alternate;
+  }
+  
+  .suggest_down img{
+    position: absolute;
+  }
+  
+  @keyframes suggest_down {
+    0% {
+      transform: translateY(0);
+    }
+  
+    100% {
+      transform: translateY(40%);
+    }
+  }
+  
+  .yelbtn_content {
+    display: none;
+    font-size: 14px;
+    padding: 0 0.5rem;
+    margin-bottom: 0.1rem;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .yelbtn_content p {
+    margin-bottom: 0.1rem;
+  }
+  
+  .shou {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    right: 0.5rem;
+    bottom: 1rem;
+    background: #fff;
+    color: #ccc;
+    display: none;
+    z-index: 20;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .suggest_main_content {
+    font-size: 14px;
+    margin: 40px 0;
+  }
+  .suggest_main_content_left {
+    width: 19%;
+    margin-right: 2%;
+    background: #fff;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .suggest_main_content_left li h2{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .suggest_main_content_left .text{
+    padding: 15px 0;
+    cursor: pointer;
+    text-align: left;
+  }
+  .suggest_main_content_left .text:hover{
+    color: #FF9900;
+  }
+  .active {
+    color: #FF9900;
+  }
+  .suggest_main_content_right {
+    width: 79%;
+    background: #fff;
+    padding: 30px;
+    font-size: 24px;
+  }
+  .suggest_main_content_right li h2{
+    font-size: 18px;
+    font-weight: 700;
+    color: #666;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .suggest_main_content_right p{
+    margin-bottom: 20px;
+    font-size: 16px !important;
+  }
+  .suggest_main_content_right p span{
+    font-size: 18px !important;
+  }
+}
