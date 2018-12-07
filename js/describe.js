@@ -2,7 +2,7 @@ $(function () {
   'use strict';
   var url = GetRequest()
 
-  getData("/v2/public/api/article/get_info",{
+  getData("/api/article/get_info",{
     id: url.id
   },function(res) {
     $("#particularsHtml").html(res.data.content)

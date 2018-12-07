@@ -54,18 +54,6 @@ body {
   white-space:nowrap;
 }
 
-.loading {
-  font-size: 14px;
-  font-weight: 900;
-  position: fixed;
-  background:#fff;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  padding: 10px;
-  border: 1xp solid #f8f8f8;
-}
-
 .no_data {
   text-align: center;
   width: 100% !important;

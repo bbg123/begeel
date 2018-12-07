@@ -1,4 +1,4 @@
-.mask_layer,.mask_layer1 {
+.mask_layer,.mask_layer1,.mask_layer2 {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, .5);
@@ -82,6 +82,25 @@
 
 .service_content_text1 .glyphicon {
   margin-right: 40px;
+}
+
+/* 加载动画 */
+.loading {
+  font-size: 14px;
+  font-weight: 900;
+  position: fixed;
+  background-color:#2b2c30;
+  left: 50%;
+  top: 50%;
+  color: #fff;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  border: 1xp solid #f8f8f8;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  display: none;
+  z-index: 21;
 }
 
 /* 手机端 */

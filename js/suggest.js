@@ -6,24 +6,23 @@ $(function () {
   // 获取标题数据
   function getTitleData() {
     var url = GetRequest()
-    getData("/v2/public/api/article/get_list",{
+    getData("/api/article/get_list",{
       cid:url.cid
     },function(res) {
       // pc端
-      var html = `<li>
-        <h2>${res.data.category.name}</h2>
-      </li>`
-      var id = url.id || '';
-      res.data.data.forEach((item,index) => {
+      var html = "<li>\n        <h2>" + res.data.category.name + "</h2>\n      </li>"
+      var id = url.id || ''
+
+      res.data.data.forEach(function (item, index) {
         // 判断是否是第一个,添加类
         if (item.id == id) {
-          html += `<li class="text active" data-index="${item.id}">${item.title}</li>`
+          html += '<li class="text active" data-index="' + item.id + '">' + item.title + '</li>'
         } else {
           if (index == 0 && id == '') {
-            html += `<li class="text active" data-index="${item.id}">${item.title}</li>`
+            html += '<li class="text active" data-index="' + item.id + '">' + item.title + '</li>'
             id = item.id
           } else {
-            html += `<li class="text" data-index="${item.id}">${item.title}</li>`
+            html += '<li class="text" data-index="' + item.id + '">' + item.title + '</li>'
           }
         }
       })
@@ -32,12 +31,10 @@ $(function () {
       
       
       // 拿到第一条数据,获取文章详情
-      getData("/v2/public/api/article/get_info",{
+      getData("/api/article/get_info",{
         id:id
       },function(res) {
-        var html1 = `<li>
-          <h2>${res.data.title}</h2>
-        </li>`
+        var html1 = "<li>\n          <h2>" + res.data.title + "</h2>\n        </li>"
         html1 += res.data.content
         $(".suggest_main_content_right").html(html1)
       })
@@ -45,14 +42,8 @@ $(function () {
 
       // 移动端
       var Mhtml = ''
-      res.data.data.forEach(item => {
-        Mhtml += `<li class="yelbtn" data-index="${item.id}">
-          ${item.title}
-          <div class="suggest_down">
-            <img src="./images/suggest_down.png" alt="">
-          </div>
-        </li>
-        <li class="yelbtn_content"></li>`
+      res.data.data.forEach(function (item) {
+        Mhtml += "<li class=\"yelbtn\" data-index=\"" + item.id + "\">\n          " + item.title + "\n          <div class=\"suggest_down\">\n            <img src=\"./images/suggest_down.png\" alt=\"\">\n          </div>\n        </li>\n        <li class=\"yelbtn_content\"></li>"
       })
       $(".suggest_main_content #Mul").html(Mhtml)
 
@@ -65,12 +56,10 @@ $(function () {
       $(this).addClass("active").siblings().removeClass("active")
       var index = $(this).data("index")
       $(".suggest_main_content_right").eq(index).show().siblings(".suggest_main_content_right").hide()
-      getData("/v2/public/api/article/get_info",{
+      getData("/api/article/get_info",{
         id:index
       },function(res) {
-        var html1 = `<li>
-          <h2>${res.data.title}</h2>
-        </li>`
+        var html1 = "<li>\n          <h2>" + res.data.title + "</h2>\n        </li>"
         html1 += res.data.content
         $(".suggest_main_content_right").html(html1)
       })
@@ -82,14 +71,10 @@ $(function () {
     $(".suggest_main_content ul").on("click",".yelbtn", function () {
       var that = $(this)
       var index = $(this).data("index")
-      getData("/v2/public/api/article/get_info",{
+      getData("/api/article/get_info",{
         id:index
       },function(res) {
-        var Mhtml1 = `<div class="shou">
-          收起
-        </div>
-        <div><h2>${res.data.title}</h2></div>
-        `
+        var Mhtml1 = "<div class=\"shou\">\n          \u6536\u8D77\n        </div>\n        <div><h2>" + res.data.title + "</h2></div>"
         Mhtml1 += res.data.content
         that.next().html(Mhtml1)
 

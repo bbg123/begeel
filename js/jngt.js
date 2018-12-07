@@ -57,7 +57,7 @@ $(function () {
   
   $(".select").on("click",function() {
     $(".selectList").stop().slideToggle()
-    return false;
+    return false
   })
 
   $(".selectbox").on("click",function() {
@@ -69,13 +69,11 @@ $(function () {
     $(".select").html(val)
     $(".select_content").show()
     var p = ""
-    cityArr.forEach(item => {
+    cityArr.forEach(function (item) {
       if (item.city == val) {
-        item.cityList.forEach(item => {
-          p += `
-          <p>${item}</p>
-          `
-          $(".select_content").html(p)
+        item.cityList.forEach(function (item) {
+          p += "\n          <p>" + item + "</p>\n          "
+          $(".select_content").html(p);
         })
       }
     })

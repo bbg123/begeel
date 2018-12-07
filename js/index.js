@@ -4,9 +4,12 @@ indexData()
 
 leftnavData()
 
+$('.loading').show()
+$('.mask_layer2').show()
+
 // 轮播图导航二级页显示
 function nav2() {
-	let index;
+	var index
 	$(".pchome_lb_navbox").on("mouseover", ".pchome_lb_nav li", function () {
 		index = $(this).data("index")
 		$(this).addClass("lihover").siblings().removeClass("lihover")
@@ -32,56 +35,38 @@ function nav2() {
 // 获取首页数据
 function indexData() {
 
-	getData("/v2/public/api/index/get_index", {}, function (res) {
+	getData("/api/index/get_index", {}, function (res) {
 
-		let html0 = "";
-		let html1 = "";
-		let html2 = "";
-		let html3 = "";
+		var html0 = "";
+		var html1 = "";
+		var html2 = "";
+		var html3 = "";
 
 		// 轮播图数据
-		res.data[0].list.forEach(item => {
-			html0 += `<a class="swiper-slide" href="${item.link}">
-					<img src="${item.img}" alt="${res.data[0].name}">
-				</a>`
-		})
+		for (var i = 0; i < res.data[0].list.length; i++) {
+			html0 += '<a class="swiper-slide" href="' + res.data[0].list[i].link + '">' +
+				'<img src="' + res.data[0].list[i].img + '" alt="' + res.data[0].list[i].name + '">' +
+				'</a>'
+		}
 		$(".swiper-wrapper").html(html0)
 		// 四宫格数据
-		res.data[1].list.forEach(item => {
-			html1 += `<a href="${item.link}" class="pchome_top_ad_img">
-					<img src="${item.img}" alt="${res.data[1].name}">
-				</a>`
-		})
+		for (var j = 0; j < res.data[1].list.length; j++) {
+			html1 += '<a href="'+res.data[1].list[j].link+'" class="pchome_top_ad_img">' +
+				'<img src="' + res.data[1].list[j].img + '" alt="' + res.data[1].name + '">' +
+				'</a>'
+		}
 		$('.pchome_top_ad').html(html1)
 
 		// 内容数据
-		res.data.forEach((item, index) => {
-			if (index > 1 && index != res.data.length - 1) {
-				html2 += `<div class="pchome_main_">
-					<div class="pchome_main_title clearfix">
-						<h3 class="fl">${item.name}</h3>
-						<a href="${item.list_url}" class="pchome_main_title_more fr">
-							探索更多
-							<i class="glyphicon glyphicon-chevron-right"></i>
-						</a>
-					</div>
 
-					<!-- 内容 -->
-					<ul class="pchome_main_content clearfix">`
-				item.list.forEach((items, index) => {
+		res.data.forEach(function (item, index) {
+			if (index > 1 && index != res.data.length - 1) {
+				html2 += '<div class="pchome_main_">\n\t\t\t\t\t<div class="pchome_main_title clearfix">\n\t\t\t\t\t\t<h3 class="fl">' + item.name + '</h3>\n\t\t\t\t\t\t<a href="' + item.list_url + '" class="pchome_main_title_more fr">\n\t\t\t\t\t\t\t\u63A2\u7D22\u66F4\u591A\n\t\t\t\t\t\t\t<i class="glyphicon glyphicon-chevron-right"></i>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<!-- \u5185\u5BB9 -->\n\t\t\t\t\t<ul class="pchome_main_content clearfix">';
+				item.list.forEach(function (items, index) {
 					if (index < 4) {
-						html2 += `
-							<li>
-								<a href="${items.link}">
-									<img src="${items.img}" alt="${item.name}">
-								</a>
-							</li>`
+						html2 += '\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href="' + items.link + '">\n\t\t\t\t\t\t\t\t\t<img src="' + items.img + '" alt="' + item.name + '">\n\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t</li>'
 					} else if (index == 4) {
-						html2 += `<!-- 广告 -->
-							</ul><a href="${items.link}" class="pchome_main_ad">
-							<img src="${items.img}" alt="${item.name}">
-							</a>
-						</div>`
+						html2 += '<!-- \u5E7F\u544A -->\n\t\t\t\t\t\t\t</ul><a href="' + items.link + '" class="pchome_main_ad">\n\t\t\t\t\t\t\t<img src="' + items.img + '" alt="' + item.name + '">\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>'
 					} else {
 						html2 += '</ul></div>'
 					}
@@ -91,11 +76,12 @@ function indexData() {
 		$(".pchome_main").html(html2)
 
 		// 首页底部数据
-		res.data[res.data.length - 1].list.forEach(item => {
-			html3 += `<a href="${item.link}">
-					<img src="${item.img}" alt="">
-				</a>`
-		})
+		for (var x = 0; x < res.data[res.data.length - 1].list.length; x++) {
+			html3 += '<a href="' + res.data[res.data.length - 1].list[x].link + '">' +
+				'<img src="' + res.data[res.data.length - 1].list[x].img + '" alt="">' +
+				'</a>'
+		}
+		
 		$('.pchome_floorad').html(html3)
 
 		// 初始化轮播图
@@ -127,33 +113,21 @@ function swiperAuto(myswiper) {
 
 // 获取pc端左侧导航条数据
 function leftnavData() {
-	getData("/v2/public/api/index/get_menu_list", {}, function (res) {
-		let pchtml = `<ul class="pchome_lb_nav">`
-		let arritem = []
-		res.data.forEach((item, index) => {
-			arritem.push(item.goods_list)
-			pchtml += `<li data-index="${index}">
-					<a class="clearfix" href="${item.list_url}">
-						<span class="fl">${item.name}</span>
-						<i class="glyphicon glyphicon-menu-right fr"></i>
-					</a>
-				</li>`
-		})
-		pchtml += `</ul>`
-		arritem.forEach(items => {
-			pchtml += `<ul class="pchome_lb_nav2">`
-			items.forEach(item => {
-				pchtml += `<li>
-						<a href="http://www.begeel.com/mobile/goodsinfo.html?id=${item.id}">
-							<img src="${item.img}" alt="${item.goods_name}">
-							<div class='pchome_lb_nav2_text'>
-								${item.goods_name}
-							</div>
-						</a>
-						</li>`
-			})
-			pchtml += `</ul>`
-		})
+	getData("/api/index/get_menu_list", {}, function (res) {
+		var pchtml = '<ul class="pchome_lb_nav">'
+		var arritem = []
+		for (var c = 0; c < res.data.length; c++) {
+				arritem.push(res.data[c].goods_list)
+				pchtml += "<li data-index=\"" + c + "\">\n\t\t\t\t\t<a class=\"clearfix\" href=\"" + res.data[c].list_url + "\">\n\t\t\t\t\t\t<span class=\"fl\">" + res.data[c].name + "</span>\n\t\t\t\t\t\t<i class=\"glyphicon glyphicon-menu-right fr\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t</li>"
+		}
+		pchtml += "<li class=\"pchome_lb_nav_arrow\">\n\t\t\t<img src=\"./images/s_jiantou_right.png\" alt=\"\"/>\n\t\t</li></ul>"
+		for (var z = 0; z < arritem.length; z++) {
+				pchtml += "<ul class=\"pchome_lb_nav2\">"
+				for (var x = 0; x < arritem[z].length; x++) {
+						pchtml += "<li>\n\t\t\t\t\t\t<a href=\"http://www.begeel.com/mobile/goodsinfo.html?id=" + arritem[z][x].id + "\">\n\t\t\t\t\t\t\t<img src=\"" + arritem[z][x].img + "\" alt=\"" + arritem[z][x].goods_name + "\">\n\t\t\t\t\t\t\t<div class='pchome_lb_nav2_text'>\n\t\t\t\t\t\t\t\t" + arritem[z][x].goods_name + "\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</li>"
+				}
+				pchtml += "</ul>"
+		}
 		$(".pchome_lb_navbox").html(pchtml)
 	})
 }
@@ -212,7 +186,7 @@ function initswiper() {
 	}
 }
 
-window.onload = function() {
+window.onload = function () { 
 
 	imghover()
 
@@ -220,5 +194,25 @@ window.onload = function() {
 
 	// 左侧导航二级目录
 	navsecond()
+
+	getmenu()
+
+	$('.loading').hide() 
+	$('.mask_layer2').hide()
+
+	// 点击弹出菜单
+	function getmenu() {
+		$('.pchome_lb_navbox').on('mouseover', function () {
+			$(this).children('.pchome_lb_nav').stop().animate({
+				left: '0'
+			})
+		})
+
+		$('.pchome_lb_navbox').on('mouseout', function () {
+			$(this).children('.pchome_lb_nav').stop().animate({
+				left: '-24%'
+			})
+		})
+	}
 
 }

@@ -1,12 +1,12 @@
 $(function() {
-  'use strict';
-  var type;
+  'use strict'
+  var type
 
   get_captcha()
 
   // 获取验证码图片
   function get_captcha() {
-    getData('/v2/public/api/antifake/get_captcha',{},function(res) {
+    getData('/api/antifake/get_captcha',{},function(res) {
       $('.yzm').html(res.data.img)
     })
   }
@@ -15,7 +15,7 @@ $(function() {
     $(this).parent().parent().hide()
     $(".mask_layer1").hide()
     if (type == 0) {
-      window.location.reload();
+      window.location.reload()
     }
   })
 
@@ -23,7 +23,7 @@ $(function() {
     $(".succeed").hide()
     $(".mask_layer1").hide()
     if (type == 0) {
-      window.location.reload();
+      window.location.reload()
     }
   })
 
@@ -34,9 +34,8 @@ $(function() {
     $(".mask_layer1").show()
     type = res.code
     if (res.code == 0) {
-      $('.result').html(`防伪编码真实有效，所属商品为宾爵手表品牌生产的正牌产品，请放心使用！感谢查询!`)
+      $('.result').html('防伪编码真实有效，所属商品为宾爵手表品牌生产的正牌产品，请放心使用！感谢查询!')
     } else {
-      console.log(res);
       $('.result').html(res.msg)
       get_captcha()
     }
@@ -45,22 +44,36 @@ $(function() {
   $(".submit").on("click",function() {
     var val = $(".pcinput").val()
     var val1 = $('.yzminput').val()
-    getData('/v2/public/api/antifake/verify',{
+    $('.loading').show()
+    $('.mask_layer2').show()
+    getData('/api/antifake/verify',{
       antifake_code:val,
       captcha:val1
     },function(res) {
-      getresult(res,val)
+      var timer = setTimeout(function() {
+        $('.loading').hide()
+        $('.mask_layer2').hide()
+        getresult(res,val)
+        clearTimeout(timer)
+      }, 2000)
     })
   })
 
   $('.mbsubmit').on('click',function() {
     var val = $(".mbinput").val()
     var val1 = $('.mbyzminput').val()
-    getData('/v2/public/api/antifake/verify',{
+    $('.loading').show()
+    $('.mask_layer2').show()
+    getData('/api/antifake/verify',{
       antifake_code:val,
       captcha:val1
     },function(res) {
-      getresult(res,val)
+      var timer1 = setTimeout(function() {
+        $('.loading').hide()
+        $('.mask_layer2').hide()
+        getresult(res,val)
+        clearTimeout(timer1)
+      }, 2000)
     })
   })
 
@@ -75,8 +88,5 @@ $(function() {
   window.onload = function() {
     // 左侧导航二级目录
     navsecond()
-
-
   }
-
 })

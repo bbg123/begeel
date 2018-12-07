@@ -1,28 +1,32 @@
-$(function() {
+$(function () {
   'use strict';
   var url = GetRequest()
-  getData("/v2/public/api/goods/get_info",{
-    id:url.id
-  },function(res) {
-    let html = "<h2>详情展示</h2>"
-    let html1 = `<h2>${res.data.goods_name}</h2>`
-    let html_img = ''
-    res.data.content_imgs.forEach(item => {
-      html += `<div>
-      <img src="${item}" alt=""/>
-      </div>`
+  getData("/api/goods/get_info", {
+    id: url.id
+  }, function (res) {
+    var html = "<h2>详情展示</h2>"
+    var html1 = '<h2>' + res.data.goods_name + '</h2>'
+    var html_img = ''
+    // res.data.content_imgs.forEach(item => {
+    //   html += `<div>
+    //   <img src="${item}" alt=""/>
+    //   </div>`
+    // })
+    res.data.content_imgs.forEach(function (item) {
+      html += "<div>\n      <img src=\"" + item + "\" alt=\"\"/>\n      </div>";
     })
     html1 += res.data.intro
-    res.data.imgs.forEach(item => {
-      html_img += `<div class="swiper-slide">
-      <img src="${item}" alt="">
-    </div>`
+    // res.data.imgs.forEach(item => {
+    //   html_img += `<div class="swiper-slide">
+    //   <img src="${item}" alt="">
+    // </div>`
+    // })
+    res.data.imgs.forEach(function (item) {
+      html_img += "<div class=\"swiper-slide\">\n      <img src=\"" + item + "\" alt=\"\">\n    </div>";
     })
     $(".goods_info_main_content").html(html)
     $(".goods_info_main_top_right").html(html1)
     $(".swiper-wrapper").html(html_img)
-
-    initSwiper()
 
   })
 
@@ -34,11 +38,11 @@ $(function() {
         loop: true,
         observer: true,
         observeParents: true,
-        effect : 'cube',
-        speed:800,
+        effect: 'cube',
+        speed: 800,
         autoplay: {
           delay: 3000,
-          disableOnInteraction:false,
+          disableOnInteraction: false,
         },
         navigation: {
           nextEl: '.swiper-button-next',
@@ -47,42 +51,44 @@ $(function() {
         // 如果需要分页器
         pagination: {
           el: '.swiper-pagination',
-          type: 'bullets',
+          type: 'bulvars',
           clickable: true,
-          clickableClass : 'my-pagination-clickable',
+          clickableClass: 'my-pagination-clickable',
         },
-        onSlideChangeEnd: function(pcmySwiper){ 
+        onSlideChangeEnd: function (pcmySwiper) {
           pcmySwiper.update(); //swiper更新
         }
       })
     } else {
       // 初始化移动端轮播图
-			var mySwiper = new Swiper('#swiper', {
-				direction: 'horizontal',
-				loop: true,
-        effect : 'cube',
-        speed:800,
-				observer: true,
-				observeParents: true,
-				autoplay: {
-					delay: 3000,
-					disableOnInteraction:false,
-				},
-				// 如果需要分页器
-				pagination: {
-					el: '.swiper-pagination',
-          type: 'bullets',
-				},
-				onSlideChangeEnd: function(mySwiper){ 
-					mySwiper.update(); //swiper更新
-				}
-			})
+      var mySwiper = new Swiper('#swiper', {
+        direction: 'horizontal',
+        loop: true,
+        effect: 'cube',
+        speed: 800,
+        observer: true,
+        observeParents: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        // 如果需要分页器
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bulvars',
+        },
+        onSlideChangeEnd: function (mySwiper) {
+          mySwiper.update(); //swiper更新
+        }
+      })
     }
   }
 
-  window.onload = function() {
+  window.onload = function () {
     // 左侧导航二级目录
     navsecond()
+
+    initSwiper()
   }
-  
+
 })

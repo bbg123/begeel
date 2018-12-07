@@ -1,4 +1,3 @@
-'use strict';
 // 获取通用数据
 getdata()
 
@@ -16,8 +15,8 @@ function getData(url, data, fn) {
 
 // 顶部置顶
 $(window).scroll(function (e) {
-  let logoHeight = $(".homelogo").height()
-  let topHeight = $("#home_top").innerHeight()
+  var logoHeight = $(".homelogo").height()
+  var topHeight = $("#home_top").innerHeight()
   if (document.body.clientWidth < 992) {
     if (e.currentTarget.pageYOffset >= logoHeight) {
       $("#home_top").addClass("home_top2").removeClass("home_top1")
@@ -62,63 +61,13 @@ $(".pchome_gotop").on("click", function () {
 
 // 点击显示客服二维码
 $('.pchome_ewm1').on('click', function () {
-  let ewm = $(this).data('ewm')
-  let html = ''
+  var ewm = $(this).data('ewm')
+  var html = ''
   if (ewm) {
-    html += `<div class="service_title">
-    <div class="service_title_text">宾爵表微信公众号</div>
-    <a href="javascript:;" class="glyphicon glyphicon-remove service_close"></a>
-  </div>
-  <div class="service_content">
-    <div class="service_content_img">
-      <img src="${ewm}" alt="" srcset="">
-    </div>
-    <div class="service_content_text">
-      <div class="service_content_text_title">
-        宾爵表微信公众号
-      </div>
-      <div class="service_content_text1">
-        <div class="glyphicon glyphicon-eye-open"></div>
-        <div>品牌体验馆</div>
-      </div>
-      <div class="service_content_text1">
-        <div class="glyphicon glyphicon-book"></div>
-        <div>品牌文化馆</div>
-      </div>
-      <div class="service_content_text1">
-        <div class="glyphicon glyphicon-bullhorn"></div>
-        <div>品牌互动馆</div>
-      </div>
-    </div>
-  </div>`
+    html += "<div class=\"service_title\">\n    <div class=\"service_title_text\">\u5BBE\u7235\u8868\u5FAE\u4FE1\u516C\u4F17\u53F7</div>\n    <a href=\"javascript:;\" class=\"glyphicon glyphicon-remove service_close\"></a>\n  </div>\n  <div class=\"service_content\">\n    <div class=\"service_content_img\">\n      <img src=\"" + ewm + "\" alt=\"\" srcset=\"\">\n    </div>\n    <div class=\"service_content_text\">\n      <div class=\"service_content_text_title\">\n        \u5BBE\u7235\u8868\u5FAE\u4FE1\u516C\u4F17\u53F7\n      </div>\n      <div class=\"service_content_text1\">\n        <div class=\"glyphicon glyphicon-eye-open\"></div>\n        <div>\u54C1\u724C\u4F53\u9A8C\u9986</div>\n      </div>\n      <div class=\"service_content_text1\">\n        <div class=\"glyphicon glyphicon-book\"></div>\n        <div>\u54C1\u724C\u6587\u5316\u9986</div>\n      </div>\n      <div class=\"service_content_text1\">\n        <div class=\"glyphicon glyphicon-bullhorn\"></div>\n        <div>\u54C1\u724C\u4E92\u52A8\u9986</div>\n      </div>\n    </div>\n  </div>"
     $('.service').html(html)
   } else {
-    html += `<div class="service_title">
-    <div class="service_title_text">宾爵表官方客服微信二维码</div>
-    <a href="javascript:;" class="glyphicon glyphicon-remove service_close"></a>
-  </div>
-  <div class="service_content">
-    <div class="service_content_img">
-      <img src="./images/service.jpg" alt="" srcset="">
-    </div>
-    <div class="service_content_text">
-      <div class="service_content_text_title">
-        宾爵表官方客服微信
-      </div>
-      <div class="service_content_text1">
-        <div class="glyphicon glyphicon-phone-alt"></div>
-        <div>人工售后客服</div>
-      </div>
-      <div class="service_content_text1">
-        <div class="glyphicon glyphicon-duplicate"></div>
-        <div>获取最新资讯</div>
-      </div>
-      <div class="service_content_text1">
-        <div class="glyphicon glyphicon-piggy-bank"></div>
-        <div>领取福利优惠</div>
-      </div>
-    </div>
-  </div>`
+    html += "<div class=\"service_title\">\n    <div class=\"service_title_text\">\u5BBE\u7235\u8868\u5B98\u65B9\u5BA2\u670D\u5FAE\u4FE1\u4E8C\u7EF4\u7801</div>\n    <a href=\"javascript:;\" class=\"glyphicon glyphicon-remove service_close\"></a>\n  </div>\n  <div class=\"service_content\">\n    <div class=\"service_content_img\">\n      <img src=\"./images/service.jpg\" alt=\"\" srcset=\"\">\n    </div>\n    <div class=\"service_content_text\">\n      <div class=\"service_content_text_title\">\n        \u5BBE\u7235\u8868\u5B98\u65B9\u5BA2\u670D\u5FAE\u4FE1\n      </div>\n      <div class=\"service_content_text1\">\n        <div class=\"glyphicon glyphicon-phone-alt\"></div>\n        <div>\u4EBA\u5DE5\u552E\u540E\u5BA2\u670D</div>\n      </div>\n      <div class=\"service_content_text1\">\n        <div class=\"glyphicon glyphicon-duplicate\"></div>\n        <div>\u83B7\u53D6\u6700\u65B0\u8D44\u8BAF</div>\n      </div>\n      <div class=\"service_content_text1\">\n        <div class=\"glyphicon glyphicon-piggy-bank\"></div>\n        <div>\u9886\u53D6\u798F\u5229\u4F18\u60E0</div>\n      </div>\n    </div>\n  </div>";
     $('.service').html(html)
   }
 
@@ -143,83 +92,74 @@ $(window).on("scroll", function () {
 
 // 获取通用数据
 function getdata() {
-  getData("/v2/public/api/index/init", {}, function (res) {
+  getData("/api/index/init", {}, function (res) {
     if (res.code == 0) {
-      let data = res.data.category
-      let html = ''
-      let pchtml1 = ''
-      let pchtml2 = ''
-      let pchtml3 = ''
-      html += `
-            <li class="home_nav_homeicon home_nav_homecontent">
-              <a href="/index.html" style="display: block;width: 100%;height: 100%;">
-                <i class="glyphicon glyphicon-home"></i>
-                <span>首页</span>
-              </a>
-            </li>
-            `
-      data.forEach(item => {
-        html += `	<li class="home_nav_homecontent open">`
-        html += `
-          <div class="navseconds">
-            <span>${item.name}</span>
-            <i class="glyphicon glyphicon-menu-down home_nav_homecontent_down"></i>
-          </div>
+      var data = res.data.category
+      var html = ''
+      var pchtml1 = ''
+      var pchtml2 = ''
+      var pchtml3 = ''
+      html += '<li class="home_nav_homeicon home_nav_homecontent">' +
+        '<a href="/index.html" style="display: block;width: 100%;height: 100%;">' +
+        '<i class="glyphicon glyphicon-home"></i>' +
+        '<span>首页</span>' +
+        '</a>' +
+        '</li>'
+      for (var i = 0; i < data.length; i++) {
+        html += '<li class="home_nav_homecontent open">'
+        html += '<div class="navseconds">' +
+          '<span>' + data[i].name + '</span>' +
+          '<i class="glyphicon glyphicon-menu-down home_nav_homecontent_down"></i>' +
+          '</div>' +
+          '<ul class="navsecond">'
+        for (var j = 0; j < data[i].children.length; j++) {
+          html += '<li>' +
+            '<a href="' + data[i].children[j].url + '">' +
+            data[i].children[j].name +
+            '</a>' +
+            '</li>'
+        }
+        html += '</ul></li>'
+      }
 
-          <ul class="navsecond">
-          `
-        item.children.forEach(items => {
-          html += `
-              <li>
-                <a href="${items.url}">
-                  ${items.name}
-                </a>
-              </li>
-              `
-        })
-        html += `
-                </ul>
-              </li>
-              `
-      })
-
-      html += `<li class="home_nav_homecontent">
-        <i class="glyphicon glyphicon-phone-alt"></i>
-        <span>售后服务热线:<span class="tel"></span></span>
-      </li>`
+      html += '<li class="home_nav_homecontent">' +
+        '<i class="glyphicon glyphicon-phone-alt"></i>' +
+        '<span>售后服务热线:<span class="tel"></span></span>' +
+        '</li>'
 
       $(".home_nav_main").html(html)
       // 移动端
 
-      data.forEach(item => {
-        switch (item.name) {
+      for (var x = 0; x < data.length; x++) {
+        switch (data[x].name) {
           case "品牌":
-            item.children.forEach(item => {
-              pchtml1 += `<li>
-                <a href="${item.url}">
-                  ${item.name}
-                </a>
-              </li>`
-            })
-            pchtml1 += `<li class="pchome_input fr">
-              <input type="text" placeholder="请输入搜索内容">
-              <i class="glyphicon glyphicon-search pchome_search"></i>
-            </li>`
+            for (var c = 0; c < data[x].children.length; c++) {
+              pchtml1 += '<li>' +
+                '<a href="' + data[x].children[c].url + '">' +
+                data[x].children[c].name +
+                '</a>' +
+                '</li>'
+            }
+
+            pchtml1 += '<li class="pchome_input fr">' +
+              '<input type="text" placeholder="请输入搜索内容">' +
+              '<i class="glyphicon glyphicon-search pchome_search"></i>' +
+              '</li>'
             $("#pchome_nav").append(pchtml1)
             break;
 
           case "服务":
-            item.children.forEach(item => {
-              pchtml2 += `<li>
-                <a href="${item.url}">
-                  ${item.name}
-                </a>
-              </li>`
-              $(".pchome_floorserve_left").html(pchtml2)
-            })
+            for (var v = 0; v < data[x].children.length; v++) {
+              pchtml2 += '<li>' +
+                '<a href="' + data[x].children[v].url + '">' +
+                data[x].children[v].name +
+                '</a>' +
+                '</li>'
+            }
+            $(".pchome_floorserve_left").html(pchtml2)
             break;
         }
-      })
+      }
       // pc端
 
       $(".tel").html(res.data.service.tel)
@@ -231,7 +171,7 @@ function getdata() {
 
 // 截取url参数
 function GetRequest() {
-  let strs
+  var strs
   var url_search = location.search;
   var theRequest = new Object();
   if (url_search.indexOf("?") != -1) {
@@ -247,8 +187,8 @@ function GetRequest() {
 
 // 左侧导航二级目录
 function navsecond() {
-  let height
-  let height1
+  var height
+  var height1
   $(".home_nav_main").on("click", ".navseconds", function () {
     // 判断是否打开
     if ($(this).next(".navsecond").css("display") == "none") {
@@ -260,7 +200,7 @@ function navsecond() {
       $(this).children("i").attr("class", "home_nav_homecontent_down glyphicon glyphicon-menu-up")
       $(this).attr("class", "navseconds bor_bto").next().show()
     } else {
-      let that = $(this)
+      var that = $(this)
       $(this).parent().stop().animate({
         height: height
       }, function () {
@@ -274,7 +214,7 @@ function navsecond() {
 // pc端导航栏
 function pcnav() {
   $(".pcnav>li").on("mouseover", function () {
-    let index = $(this).data("index")
+    var index = $(this).data("index")
     $(".pcsecondnav").show()
     $(".pcsecondnav>li").eq(index).children().stop().slideToggle()
     $(".pcsecondnav>li").eq(index).siblings().children().stop().slideUp()
@@ -302,22 +242,22 @@ window.onload = function () {
 
 }
 $('#pchome_nav').on('click', '.pchome_search', function () {
-  let val = $(this).siblings().val()
+  var val = $(this).siblings().val()
   if (val != '') {
     $(this).siblings().val('')
     window.location.href = 'http://www.begeel.com/mobile/goods.html?type=' + val
   }
 })
 $('#pchome_nav').on('blur', '.pchome_input input', function () {
-  let val = $(this).val()
+  var val = $(this).val()
   if (val != '') {
     $(this).val('')
     window.location.href = 'http://www.begeel.com/mobile/goods.html?type=' + val
   }
 })
 
-$(window).on('keydown', function(e) {
-  let val = $('.pchome_input input').val() || $('.form-control').val()
+$(window).on('keydown', function (e) {
+  var val = $('.pchome_input input').val() || $('.form-control').val()
   if (e.keyCode == 13 && val != '') {
     $('.pchome_input input').val('')
     $('.form-control').val('')
@@ -326,14 +266,14 @@ $(window).on('keydown', function(e) {
 })
 
 $('.form-control').on('click', function () {
-  let val = $(this).siblings().val()
+  var val = $(this).siblings().val()
   if (val != '') {
     $(this).siblings().val('')
     window.location.href = 'http://www.begeel.com/mobile/goods.html?type=' + val
   }
 })
 $('.form-control').on('blur', function () {
-  let val = $(this).val()
+  var val = $(this).val()
   if (val != '') {
     $(this).val('')
     window.location.href = 'http://www.begeel.com/mobile/goods.html?type=' + val

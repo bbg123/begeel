@@ -56,7 +56,8 @@
 @media (min-width: 992px) {
   .goods_info_main_top_left {
     width: 50% !important;
-    padding: 20px
+    padding: 20px;
+    overflow: hidden;
   }
   
   .goods_info_main_top_right {
